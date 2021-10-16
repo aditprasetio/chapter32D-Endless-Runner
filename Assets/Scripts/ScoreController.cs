@@ -11,32 +11,32 @@ public class ScoreController : MonoBehaviour
     private int currentScore = 0;
     private int lastScoreHighlight = 0;
 
-    private void Start()
+    void Start()
     {
-        // reset
         currentScore = 0;
         lastScoreHighlight = 0;
     }
 
-    public float GetCurrentScore()
+    void Update()
     {
-        return currentScore;
-    }
-
-    public void IncreaseCurrentScore(int increment)
-    {
-        currentScore += increment;
-
         
     }
 
-    public void FinishScoring()
-    {
-        // set high score
-        if (currentScore > ScoreData.highScore)
-        {
+    public float GetCurrentScore(){
+        return currentScore;
+    }
+
+    public void IncreaseCurrentScore(int increment){
+        currentScore += increment;
+        if(currentScore - lastScoreHighlight > scoreHighlightRange){
+            sound.PlayScoreHighlight();
+            lastScoreHighlight += scoreHighlightRange;
+        }
+    }
+
+    public void FinishScoring(){
+        if(currentScore > ScoreData.highScore){
             ScoreData.highScore = currentScore;
         }
     }
 }
-

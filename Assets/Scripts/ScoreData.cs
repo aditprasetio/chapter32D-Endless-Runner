@@ -1,4 +1,4 @@
-﻿public static class ScoreData
+﻿public class ScoreData
 {
     public static int highScore;
 }

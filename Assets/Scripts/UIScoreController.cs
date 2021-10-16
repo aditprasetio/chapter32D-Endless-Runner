@@ -12,7 +12,12 @@ public class UIScoreController : MonoBehaviour
     [Header("Score")]
     public ScoreController scoreController;
 
-    private void Update()
+    void Start()
+    {
+        
+    }
+
+    void Update()
     {
         score.text = scoreController.GetCurrentScore().ToString();
         highScore.text = ScoreData.highScore.ToString();
